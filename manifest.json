@@ -1,0 +1,20 @@
+{
+    "name": "MCDA5550 Intro to local storage - 02-local-storage",
+    "short_name": "02-local-storage",
+    "description": "Creating a PWA is very easy!",
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#EEEEEE",
+    "orientation": "portrait",
+    "dir": "ltr",
+    "lang": "en-CA",
+    "icons": [
+        {
+            "src": "/smu-icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
