@@ -6,6 +6,8 @@ self.addEventListener("install", function (event) {
         "/",
         "/index.html",
         "/script.js",
+        "/sw.js",
+        "/style.css",
         "/manifest.json",
         "/favicon.ico",
         "/smu-icon-192x192.png",

@@ -23,7 +23,7 @@ const todoList = document.getElementById("todos");
 // Side Effects / Lifecycle
 const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
-const todoData = [];
+let todoData = [];
 let todoId = 0
 existingTodos.forEach((todo) => {
   addTodo(todo);
@@ -31,9 +31,13 @@ existingTodos.forEach((todo) => {
 
 function addTodo(todoText) {
 
-  todoData.push(todoText);
+  if (todoText.length === 0) {
+    return
+  }
 
+  todoData.push(todoText);
   const li = document.createElement("li");
+
   // create checkbox
   const checkboxElem = document.createElement("INPUT"); 
   checkboxElem.setAttribute("type", "checkbox");
@@ -45,17 +49,7 @@ function addTodo(todoText) {
   labelElem.textContent = todoText; // Set the label text
 
 // Add onclick listener to the checkbox
-checkboxElem.addEventListener("click", function() {
-  if (checkboxElem.checked) {
-      console.log("Checkbox is checked");
-      let associatedLabel = document.querySelector(`label[for="${checkboxElem.id}"]`);
-      let labelText = associatedLabel.textContent;
-      console.log(`Label text: ${labelText}`);
-  } else {
-      console.log("Checkbox is unchecked");
-      // Add your actions for when the checkbox is unchecked
-  }
-});
+checkboxElem.addEventListener("click", itemClicked);
 
 // Append the checkbox and label to the list item
   li.appendChild(checkboxElem);
@@ -65,6 +59,24 @@ checkboxElem.addEventListener("click", function() {
   localStorage.setItem("todos", JSON.stringify(todoData));
   input.value = "";
 }
+
+// Listener to be executed when an item is clicked
+function itemClicked(e) {
+  //console.log("Checkbox is checked");
+  let associatedLabel = document.querySelector('label[for="' + this.id + '"]');
+  let labelText = associatedLabel.textContent.trim(); 
+  console.log('Label text: ' + labelText);
+
+  // Remove the item from the todoData list
+  console.log('Before: ' + todoData);
+  todoData = todoData.filter(function (target) {
+      return target.trim() !== labelText; 
+  });
+  console.log('After: ' + todoData);
+  localStorage.setItem('todos', JSON.stringify(todoData));
+  location.reload()
+}
+
 
 // Events
 form.onsubmit = (event) => {
