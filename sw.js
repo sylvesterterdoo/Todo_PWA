@@ -4,9 +4,9 @@ self.addEventListener("install", function (event) {
     caches.open("my-cache-name-02").then(function (cache) {
       cache.addAll([
         "/",
-        // "/index.html",
-        // "/script.js",
-        // "/sw.js",
+        "/index.html",
+        "/script.js",
+        "/sw.js",
         "/style.css",
         "/manifest.json",
         "/favicon.ico",

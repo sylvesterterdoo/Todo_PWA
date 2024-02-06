@@ -1,7 +1,7 @@
 {
-    "name": "MCDA5550 Intro to local storage - 02-local-storage",
-    "short_name": "02-local-storage",
-    "description": "Creating a PWA is very easy!",
+    "name": "Todo Application using local storage",
+    "short_name": "todo_app",
+    "description": "creating a simple todo app that uses localstorage!",
     "start_url": "/",
     "scope": ".",
     "display": "standalone",

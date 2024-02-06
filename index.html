@@ -14,20 +14,13 @@
 </head>
 
 <body>
-    <div>
-        <h1>Todos</h1>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
     </div>
-
-    <ul id="todos"></ul>
-
-    <form>
-        <input name="todo" type="text">
-        <input type="submit" value="Add Todo">
-    </form>
-    <!-- <button onclick="deleteSelectedItems()">Click me</button> -->
 </body>
 
 <script src="/script.js"></script>
-<!-- <script src="/TodoItem.js"></script> -->
-
 </html>

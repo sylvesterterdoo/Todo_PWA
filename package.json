@@ -1,7 +1,7 @@
 {
-  "name": "02-local-storage",
+  "name": "todo-local-storage",
   "version": "1.1.0",
-  "description": "This section explores local storage, one way of storing data in a PWA>",
+  "description": "explores using local storage, one way of storing data in a PWA>",
   "scripts": {
     "start": "http-server -c-1 .",
     "test": "echo \"Error: no test specified\" && exit 1"
