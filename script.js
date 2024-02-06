@@ -13,46 +13,52 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-// Function to add a new todo task
-function addTask() {
-  let taskInput = document.getElementById("taskInput");
-  let taskText = taskInput.value.trim();
-  if (taskText !== "") {
-      let taskList = document.getElementById("taskList");
-      let li = document.createElement("li");
-      li.innerHTML = `<input type="checkbox" onclick="deleteTask(this)"> ${taskText}`;
-      taskList.appendChild(li);
-      taskInput.value = "";
+function addTodo() {
+  var taskInput = document.getElementById("taskInput");
+  var prioritySelect = document.getElementById("prioritySelect");
+  var task = taskInput.value;
+  var priority = prioritySelect.value;
 
-      // Add task to local storage
-      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      tasks.push(taskText);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+  if (task.trim() === "") {
+      alert("Please enter a task.");
+      return;
   }
+
+  var todoItem = { task: task, priority: priority };
+  var todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+  todoList.push(todoItem);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+  displayTodos();
+  taskInput.value = "";
 }
 
-// Function to delete task
-function deleteTask(checkbox) {
-  let li = checkbox.parentNode;
-  li.parentNode.removeChild(li);
-
-  // Remove task from local storage
-  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  let taskText = checkbox.nextSibling.textContent.trim();
-  let index = tasks.indexOf(taskText);
-  if (index !== -1) {
-      tasks.splice(index, 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
+function deleteTodo(index) {
+  var todoList = JSON.parse(localStorage.getItem("todoList"));
+  todoList.splice(index, 1);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+  displayTodos();
 }
 
-window.onload = function() {
-  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  let taskList = document.getElementById("taskList");
-  tasks.forEach(taskText => {
-      let li = document.createElement("li");
-      li.innerHTML = `<input type="checkbox" onclick="deleteTask(this)"> ${taskText}`;
-      taskList.appendChild(li);
+function displayTodos() {
+  var todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+  var todoListContainer = document.getElementById("todoList");
+  todoListContainer.innerHTML = "";
+
+  todoList.forEach(function(todoItem, index) {
+      var li = document.createElement("li");
+      var checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.onclick = function() {
+          deleteTodo(index);
+      };
+
+      var label = document.createElement("label");
+      label.textContent = todoItem.task + " (" + todoItem.priority + ")";
+
+      li.appendChild(checkbox);
+      li.appendChild(label);
+      todoListContainer.appendChild(li);
   });
 }
 
+displayTodos();
