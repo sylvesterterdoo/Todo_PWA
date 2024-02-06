@@ -4,16 +4,16 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js").then(
       function () {
         // register sw
-        console.log("ServiceWorker registration successful"); // registration was successful
+        console.log("ServiceWorker registration successful"); 
       },
       function (err) {
-        console.log("ServiceWorker registration failed", err); // registration failed
+        console.log("ServiceWorker registration failed", err);
       }
     );
   });
 }
 
-// Add a new todo task
+// Function to add a new todo task
 function addTask() {
   let taskInput = document.getElementById("taskInput");
   let taskText = taskInput.value.trim();
