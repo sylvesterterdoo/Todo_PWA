@@ -20,11 +20,11 @@ Run `npm run start` to start the application using `http-server`.
 
 ## Todos Application Features
 
-![screenshot of the todos app](./assets/screenshot-todos.png)
+![screenshot of the todos app](./assets/screenshot-todo.png)
 
 ### Todo List Functionality
 
-Add items to your todo list, view them in a simple list format, delete item from todo list
+Add items to your todo list with default priority normal, view them in a simple list format, delete item from todo list
 and have them persist across browser sessions thanks to localStorage.
 
 ### PWA Setup
